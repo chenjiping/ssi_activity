@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mybatis.mapper.AaaMapper" >
+  <resultMap id="BaseResultMap" type="com.mybatis.model.Aaa" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="feature_type" property="featureType" jdbcType="VARCHAR" />
+    <result column="column_name" property="columnName" jdbcType="VARCHAR" />
+    <result column="cond_type" property="condType" jdbcType="SMALLINT" />
+    <result column="data_type" property="dataType" jdbcType="CHAR" />
+    <result column="online_duration" property="onlineDuration" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, feature_type, column_name, cond_type, data_type, online_duration
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mybatis.model.AaaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from aaa
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from aaa
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from aaa
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.mybatis.model.AaaExample" >
+    delete from aaa
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mybatis.model.Aaa" >
+    insert into aaa (id, feature_type, column_name, 
+      cond_type, data_type, online_duration
+      )
+    values (#{id,jdbcType=INTEGER}, #{featureType,jdbcType=VARCHAR}, #{columnName,jdbcType=VARCHAR}, 
+      #{condType,jdbcType=SMALLINT}, #{dataType,jdbcType=CHAR}, #{onlineDuration,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mybatis.model.Aaa" >
+    insert into aaa
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="featureType != null" >
+        feature_type,
+      </if>
+      <if test="columnName != null" >
+        column_name,
+      </if>
+      <if test="condType != null" >
+        cond_type,
+      </if>
+      <if test="dataType != null" >
+        data_type,
+      </if>
+      <if test="onlineDuration != null" >
+        online_duration,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="featureType != null" >
+        #{featureType,jdbcType=VARCHAR},
+      </if>
+      <if test="columnName != null" >
+        #{columnName,jdbcType=VARCHAR},
+      </if>
+      <if test="condType != null" >
+        #{condType,jdbcType=SMALLINT},
+      </if>
+      <if test="dataType != null" >
+        #{dataType,jdbcType=CHAR},
+      </if>
+      <if test="onlineDuration != null" >
+        #{onlineDuration,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mybatis.model.AaaExample" resultType="java.lang.Integer" >
+    select count(*) from aaa
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update aaa
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.featureType != null" >
+        feature_type = #{record.featureType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.columnName != null" >
+        column_name = #{record.columnName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.condType != null" >
+        cond_type = #{record.condType,jdbcType=SMALLINT},
+      </if>
+      <if test="record.dataType != null" >
+        data_type = #{record.dataType,jdbcType=CHAR},
+      </if>
+      <if test="record.onlineDuration != null" >
+        online_duration = #{record.onlineDuration,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update aaa
+    set id = #{record.id,jdbcType=INTEGER},
+      feature_type = #{record.featureType,jdbcType=VARCHAR},
+      column_name = #{record.columnName,jdbcType=VARCHAR},
+      cond_type = #{record.condType,jdbcType=SMALLINT},
+      data_type = #{record.dataType,jdbcType=CHAR},
+      online_duration = #{record.onlineDuration,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mybatis.model.Aaa" >
+    update aaa
+    <set >
+      <if test="featureType != null" >
+        feature_type = #{featureType,jdbcType=VARCHAR},
+      </if>
+      <if test="columnName != null" >
+        column_name = #{columnName,jdbcType=VARCHAR},
+      </if>
+      <if test="condType != null" >
+        cond_type = #{condType,jdbcType=SMALLINT},
+      </if>
+      <if test="dataType != null" >
+        data_type = #{dataType,jdbcType=CHAR},
+      </if>
+      <if test="onlineDuration != null" >
+        online_duration = #{onlineDuration,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mybatis.model.Aaa" >
+    update aaa
+    set feature_type = #{featureType,jdbcType=VARCHAR},
+      column_name = #{columnName,jdbcType=VARCHAR},
+      cond_type = #{condType,jdbcType=SMALLINT},
+      data_type = #{dataType,jdbcType=CHAR},
+      online_duration = #{onlineDuration,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

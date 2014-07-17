@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+
+<generatorConfiguration >
+
+ <classPathEntry location="D:/maven/repos/postgresql/postgresql/9.2-1002.jdbc4/postgresql-9.2-1002.jdbc4.jar" />
+  <context id="context1" >
+  	<commentGenerator>
+  		<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+  		<property name="suppressAllComments" value="true"/>
+  	</commentGenerator>
+    <jdbcConnection driverClass="org.postgresql.Driver" connectionURL="jdbc:postgresql://192.168.9.205:5432/cloudeasy" userId="clouddev" password="pdc@1234" />
+    <!-- model生成 -->
+    <javaModelGenerator targetPackage="com.mybatis.model" targetProject="ssi_activity" />
+    <!-- sqlMap生成 -->
+    <sqlMapGenerator targetPackage="com.mybatis.sqlMap" targetProject="ssi_activity" />
+    <!-- mapper生成 -->
+    <javaClientGenerator targetPackage="com.mybatis.mapper" targetProject="ssi_activity" type="XMLMAPPER" />
+    
+    <table schema="" tableName="aaa" /> 
+    <table schema="" tableName="aa" />
+  </context>
+</generatorConfiguration>
