@@ -1,9 +1,13 @@
 package com.mybatis.mapper;
 
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.mybatis.model.Aaa;
 import com.mybatis.model.AaaExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface AaaMapper {
     int countByExample(AaaExample example);
@@ -16,7 +20,7 @@ public interface AaaMapper {
 
     int insertSelective(Aaa record);
 
-    List<Aaa> selectByExample(AaaExample example);
+    List<Aaa> selectByExample(PageBounds pageBounds,AaaExample example);
 
     Aaa selectByPrimaryKey(Integer id);
 
@@ -27,4 +31,6 @@ public interface AaaMapper {
     int updateByPrimaryKeySelective(Aaa record);
 
     int updateByPrimaryKey(Aaa record);
+    
+    List testSelect(PageBounds pageBounds,Map map);
 }

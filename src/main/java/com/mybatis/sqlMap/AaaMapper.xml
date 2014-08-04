@@ -225,4 +225,7 @@
       online_duration = #{onlineDuration,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="testSelect" parameterType="map" resultType="map">
+  	select * from aaa
+  </select>
 </mapper>

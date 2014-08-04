@@ -1,28 +1,29 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ include file="/common/taglibs.jsp"%>
+<%@ include file="/common/meta.jsp"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'test.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+<head>
+<title>test</title>
+</head>
 
-  </head>
-  
-  <body>
-    This is my JSP page123. <br>
-  </body>
+<body>
+	<table id="dg"></table>
+	<script type="text/javascript">
+		$('#dg').datagrid({
+			url : '${ctx}/getData',
+			columns : [ [ {
+				field : 'id',
+				title : 'id',
+				width : 100
+			}, {
+				field : 'columnName',
+				title : 'columnName',
+				width : 100
+			}] ],
+			pagination:true
+		});
+	</script>
+</body>
 </html>

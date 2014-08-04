@@ -104,6 +104,12 @@
 			<artifactId>flyway-core</artifactId>
 			<version>${flyway.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.4</version>
+			<classifier>jdk15</classifier>
+		</dependency>
 		<!-- SPRING begin -->
 		<!-- spring basic -->
 		<dependency>
@@ -177,7 +183,7 @@
 		<dependency>
 			<groupId>com.github.miemiedev</groupId>
 			<artifactId>mybatis-paginator</artifactId>
-			<version>1.2.9</version>
+			<version>1.2.10</version>
 		</dependency>
 		<!-- dbcp connection pool -->
 		<dependency>

@@ -17,9 +17,4 @@ public class LoginController {
 		return "login";
 	}
 	
-	@RequestMapping(value = "/test")
-	public void test(){
-		testService.test();
-	}
-
 }
