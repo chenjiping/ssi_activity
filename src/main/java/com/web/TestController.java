@@ -43,9 +43,4 @@ public class TestController {
 		m.put("total", pl.getPaginator().getTotalCount());
 		ResponseUtils.renderJson(response, m);
 	}
-
-	@RequestMapping(value = "/test")
-	public void test(){
-		
-	}
 }

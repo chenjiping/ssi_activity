@@ -70,6 +70,7 @@
   <sql id="Base_Column_List" >
     id, feature_type, column_name, cond_type, data_type, online_duration
   </sql>
+  
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mybatis.model.AaaExample" >
     select
     <if test="distinct" >

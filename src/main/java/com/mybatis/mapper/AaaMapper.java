@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.mybatis.model.Aaa;
@@ -33,4 +34,5 @@ public interface AaaMapper {
     int updateByPrimaryKey(Aaa record);
     
     List testSelect(PageBounds pageBounds,Map map);
+
 }
